@@ -12,6 +12,7 @@ function App() {
 	return (
 		<>
 			<div className="App">Hello {hello} 2</div>
+			<div className="App">Hello {hello} 2</div>
 		</>
 	);
 }
