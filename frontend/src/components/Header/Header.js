@@ -7,12 +7,15 @@ import {
 	Form,
 	FormControl,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Header = () => {
 	return (
 		<Navbar bg="primary" expand="lg" variant="dark">
 			<Container>
-				<Navbar.Brand href="/">VERA Luxury Pools</Navbar.Brand>
+				<Navbar.Brand>
+					<Link to="/">VERA Luxury Pools</Link>
+				</Navbar.Brand>
 				<Navbar.Toggle aria-controls="navbarScroll" />
 				<Navbar.Collapse id="navbarScroll">
 					<Nav className="m-auto">
@@ -26,7 +29,9 @@ const Header = () => {
 						</Form>
 					</Nav>
 					<Nav>
-						<Nav.Link href="#action1">My Notes</Nav.Link>
+						<Nav.Link>
+							<Link to="/mynotes">My Notes</Link>
+						</Nav.Link>
 						<NavDropdown
 							title="Chris Karagiannis"
 							id="navbarScrollingDropdown"
