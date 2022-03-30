@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import LandingPage from "./screens/LandingPage/LandingPage";
 import MyNotes from "./screens/MyNotes/MyNotes";
+import TestingCodeHere from "./screens/MyNotes/TestingCodeHere";
 
 // const App = () => <div className="App">Hello WORLD!</div>;
 //
@@ -21,6 +22,11 @@ function App() {
 				<Routes>
 					<Route path="/" element={<LandingPage />} exact />
 					<Route path="/mynotes" element={<MyNotes />} exact />
+					<Route
+						path="/testingcodehere"
+						element={<TestingCodeHere />}
+						exact
+					/>
 				</Routes>
 			</main>
 			<Footer />

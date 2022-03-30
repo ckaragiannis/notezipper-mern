@@ -30,6 +30,9 @@ const Header = () => {
 					</Nav>
 					<Nav>
 						<Nav.Link>
+							<Link to="/testingcodehere">Testing Code Here</Link>
+						</Nav.Link>
+						<Nav.Link>
 							<Link to="/mynotes">My Notes</Link>
 						</Nav.Link>
 						<NavDropdown
