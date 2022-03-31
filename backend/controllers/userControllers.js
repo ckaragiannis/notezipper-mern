@@ -10,6 +10,11 @@ const generateToken = require("../utils/generateToken");
 const authUser = asyncHandler(async (req, res) => {
 	const { email, password } = req.body; // for our user to login we will need our email and password from the req.body submit POST
 
+	console.log(
+		"\nIn function backend> authUser: " +
+			JSON.stringify({ email, password })
+	);
+
 	const user = await User.findOne({ email: email.toLowerCase() });
 
 	if (user && (await user.matchPassword(password))) {
@@ -34,6 +39,11 @@ const authUser = asyncHandler(async (req, res) => {
 //@access          Public
 const registerUser = asyncHandler(async (req, res) => {
 	const { name, email, password, pic } = req.body;
+
+	console.log(
+		"\nIn function backend> registerUser: " +
+			JSON.stringify({ name, email, password, pic })
+	);
 
 	const userExists = await User.findOne({ email: email.toLowerCase() });
 

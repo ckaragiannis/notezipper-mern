@@ -6,7 +6,7 @@ import axios from "axios";
 
 const MyNotes = () => {
 	const [notes, setNotes] = useState([]);
-
+	const [userInfo, setUserInfo] = useState({});
 	const deleteHandler = (id) => {
 		if (window.confirm("Are you sure?")) {
 		}
@@ -17,17 +17,19 @@ const MyNotes = () => {
 	const fetchNotes = async () => {
 		// const data = await axios.get("http://localhost:5000/api/notes"); // since we added proxy line to frontend->package.json we can change this to
 		// const data = await axios.get("/api/notes");
-		const { data } = await axios.get("/api/notes"); // destructure the data from the response array so you only have the data variable
+		const { data } = await axios.get("/api/notes"); // destructure the data from the response array so you only have the data variable VERY SMART
 		setNotes(data);
 	};
 
 	useEffect(() => {
-		console.log("IAMHERE");
 		fetchNotes();
+		setUserInfo(JSON.parse(localStorage.getItem("userInfo")));
 	}, []);
 
 	return (
-		<MainScreen title="Welcome back Chris Karagiannis">
+		<MainScreen
+			title={"Welcome Back " + (userInfo ? userInfo.name : "UNKNOWN")}
+		>
 			<Link to="/createnote" style={{ flex: 1 }}>
 				<Button style={{ marginLeft: 10, marginBottom: 6 }} size="lg">
 					Create New Note
