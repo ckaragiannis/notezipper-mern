@@ -6,9 +6,12 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import LandingPage from "./screens/LandingPage/LandingPage";
 import MyNotes from "./screens/MyNotes/MyNotes";
-// import TestingCodeHere from "./screens/MyNotes/TestingCodeHere";
+import TestingCodeHere from "./screens/TestingCodeHere/TestingCode";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
+import CreateNote from "./screens/SingleNote/CreateNote";
+import SingleNote from "./screens/SingleNote/SingleNote";
+import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
 
 // const App = () => <div className="App">Hello WORLD!</div>;
 //
@@ -30,11 +33,15 @@ function App() {
 						element={<RegisterScreen />}
 						exact
 					/>
-					{/* <Route
+					<Route path="/createnote" element={<CreateNote />} exact />
+					<Route path="/note/:id" element={<SingleNote />} exact />
+					<Route path="/profile" element={<ProfileScreen />} />
+
+					<Route
 						path="/testingcodehere"
 						element={<TestingCodeHere />}
 						exact
-					/> */}
+					/>
 				</Routes>
 			</main>
 			<Footer />

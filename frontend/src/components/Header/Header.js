@@ -8,8 +8,32 @@ import {
 	FormControl,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "./../../actions/userActions";
 
 const Header = () => {
+	const navigate = useNavigate();
+
+	const dispatch = useDispatch();
+	const userLogin = useSelector((state) => state.userLogin); // userLogin is the name of our reducer in store.js
+	const { userInfo } = userLogin;
+
+	const logoutHandler = (e) => {
+		e.preventDefault();
+		if (userInfo) {
+			localStorage.removeItem("userInfo");
+			//navigate("/");
+			dispatch(logout());
+			navigate("/login");
+			// , {
+			// state: {
+			// 	id: 1,
+			// 	name: "chris karagiannis",
+			// },
+		}
+	};
+
 	return (
 		<Navbar bg="primary" expand="lg" variant="dark">
 			<Container>
@@ -35,18 +59,22 @@ const Header = () => {
 						<Nav.Link>
 							<Link to="/mynotes">My Notes</Link>
 						</Nav.Link>
-						<NavDropdown
-							title="Chris Karagiannis"
-							id="navbarScrollingDropdown"
-						>
-							<NavDropdown.Item href="#action3.1">
-								My Profile
-							</NavDropdown.Item>
-							<NavDropdown.Divider />
-							<NavDropdown.Item href="#action3.3">
-								Logout
-							</NavDropdown.Item>
-						</NavDropdown>
+						{userInfo != null && (
+							<NavDropdown
+								title={
+									userInfo != null ? userInfo.name : "UNKNOWN"
+								}
+								id="navbarScrollingDropdown"
+							>
+								<NavDropdown.Item href="/profile">
+									My Profile
+								</NavDropdown.Item>
+								<NavDropdown.Divider />
+								<NavDropdown.Item onClick={logoutHandler}>
+									Logout
+								</NavDropdown.Item>
+							</NavDropdown>
+						)}
 					</Nav>
 				</Navbar.Collapse>
 			</Container>
